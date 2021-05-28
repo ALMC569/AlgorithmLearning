@@ -18,7 +18,60 @@ namespace AlgorithmPackage.Sort
 
         public override Output GetSolution(Input input)
         {
-            throw new NotImplementedException();
+            int[] resultArr = new int[this.input.InputArray.Length];
+            this.input.InputArray.CopyTo(resultArr, 0);
+            return new Result() { OutputArray = Solve(resultArr) };
+        }
+
+        public int[] Solve(int[] input)
+        {
+            int heapSize = this.input.InputArray.Length;
+            while (heapSize > 2)
+            { 
+                
+            }
+
+            return input;
+        }
+        public void BuildMaxHeap(int begin, int[] arr)
+        {
+            //从叶子节点上一层开始
+            for (int i = (arr.Length - begin) / 2; i >= begin; i--)
+            {
+                MaxHeapfy(arr, i) ;
+            }
+        }
+        /// <summary>
+        /// 从根节点开始 大顶堆化
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="rootIndex"></param>
+        public void MaxHeapfy(int[] arr, int rootIndex)
+        {
+            int largest = arr[rootIndex];
+            int largestValue = 0;
+            int leftValue = 0;
+            int rightValue = 0;
+
+            int left = Left(rootIndex,out leftValue);
+            int right = Right(rootIndex, out rightValue);
+
+            if (largestValue < leftValue)
+            {
+                largestValue = leftValue;
+                largest = left;
+            }
+
+            if (largestValue < rightValue)
+            {
+                largestValue = rightValue;
+                largest = right;
+            }
+
+            Util.Swap(arr, largest, rootIndex);
+
+            if (largest != rootIndex)
+                MaxHeapfy(arr, largest);
         }
 
         private int Left(int i, out int value)
@@ -44,16 +97,6 @@ namespace AlgorithmPackage.Sort
 
             return index - 1;
         }
-    }
-
-    public class Result : AlgorithmPackage.Common.Output
-    {
-        public int[] OutputArray { get; set; }
-    }
-
-    public class Parameters : AlgorithmPackage.Common.Input
-    {
-        public int[] InputArray { get; set; }
     }
 
 }

@@ -1,10 +1,18 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AlgorithmTest
 {
-    class SortTest
+    [TestClass]
+    public class SortTest
     {
+        [TestMethod]
+        public void HeapSort()
+        {
+            int[] input = new int[] { };
+            
+        }
     }
 }
